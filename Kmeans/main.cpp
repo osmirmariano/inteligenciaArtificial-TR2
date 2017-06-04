@@ -13,21 +13,7 @@ int main(int argc, char const *argv[]){
 	srand(time(NULL));
 
 	int pontosTotal, valorTotal, k, maxInteracoes, temNome, x, y;
-	cout << "---------------INSERÇÃO DE DADOS--------------" << endl;
-	cout << " INFORME O TOTAL DE PONTOS: ";
-	cin >> pontosTotal;
-	cout << endl;
-	cout << " INFORME O VALOR TOTAL: ";
-	cin >> valorTotal;
-	cout << endl;
-	cout << " INFORME O VALOR DE K (QUANTIDADE DE CLUSTERS): ";
-	cin >> k;
-	cout << endl;
-	cout << " INFORME O MÁXIMO DE INTERAÇÕES QUE DESEJA: ";
-	cin >> maxInteracoes;
-	cout << endl;
-	
-	cout << "--------------------------------------------" << endl << endl;
+	cin >> pontosTotal >> valorTotal >> k >> maxInteracoes;
 	vector<Ponto> pontos;
 	string nomePonto;
 	double valor;

@@ -26,7 +26,7 @@ int main(int argc, char const *argv[]){
 		Individuo ind(a, b, c, d, classe);
 		classeObtida = knn.classificar(individuos, ind, k);
 		
-		cout << "Classe esperada: " << classe << endl << endl;
+		cout << "Classe esperada: " << classe << endl;
 		cout << "Classe obtida: " << classeObtida << endl << endl;
 
 		if(classe == classeObtida)
@@ -35,7 +35,8 @@ int main(int argc, char const *argv[]){
 	
 
 	cout << "---------------------------------------------------" << endl;
-	cout << acertos << " acertos de um total de " << tamTestes << " testes" << endl;
+	cout << "QUANTIDADE DE K VIZINHOS: " << k << endl;
+	cout << acertos << " ACERTOS DE UM TOTAL DE " << tamTestes << " TESTES" << endl;
 
 	return 0;
 }
