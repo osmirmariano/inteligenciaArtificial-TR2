@@ -1,3 +1,6 @@
+#ifndef KMEANS_H
+#define KMEANS_H
+
 #include <iostream>
 #include <vector>
 #include <math.h>
@@ -32,7 +35,7 @@ class Kmeans{
                 double distancia;
 
                 for(y = 0; y < valorTotal; y++){
-                    soma += pow(clusters[x].getValorCentral(y) - point.getValores(y), 2.0);
+                    soma += pow(clusters[x].getValorCentral(y) - ponto.getValores(y), 2.0);
                 }
 
                 distancia = sqrt(soma);
@@ -46,26 +49,27 @@ class Kmeans{
         };
 
     public:
-        Kmeans(int k, int pontosTotal, int maxInteracoes){
+        Kmeans(int k, int pontosTotal, int valorTotal, int maxInteracoes){
             this->k = k;
             this->pontosTotal = pontosTotal;
             this->valorTotal = valorTotal;
             this->maxInteracoes = maxInteracoes;
         };
 
-        void percorre(vector<Ponto>&pontos){
+        void percorre(vector<Ponto> &pontos){
             int x, y, z;
+            bool feito;
 
             if(k > pontosTotal)
-                return 0;
+                return;
 
             vector<int> indiceProibido;
 
-            for(x = 0; x < k; i++){
+            for(x = 0; x < k; x++){
                 while(true){
                     int indicePonto = rand()%pontosTotal;
 
-                    if(find(indiceProibido.begin(), indiceProibido.end(), indicePonto) = indiceProibido.end()){
+                    if(find(indiceProibido.begin(), indiceProibido.end(), indicePonto) == indiceProibido.end()){
                         indiceProibido.push_back(indicePonto);
                         pontos[indicePonto].setCluster(x);
                         Cluster cluster(x, pontos[indicePonto]);
@@ -77,7 +81,7 @@ class Kmeans{
             int interacao =  1;
 
             while(true){
-                bool feito = true;
+                feito = true;
 
                 for(x = 0; x < pontosTotal; x++){
                     int idAntigoCluster = pontos[x].getCluster();
@@ -89,46 +93,48 @@ class Kmeans{
                             clusters[idAntigoCluster].removePonto(pontos[x].getIdPonto());
 
                         pontos[x].setCluster(idCentroProx);
-                        clusters[idCentroProx].adiconarPonto(ponto[x]);
+                        clusters[idCentroProx].adicionarPonto(pontos[x]);
                         feito = false;//pq mudou de grupo
                     }
                 }
-            }
 
-            //Recalcular o centro de cada cluster
-            for(x = 0; x < k; x++){
-                for(y = 0; y < valorTotal; y++){
-                    int totalPontosCluster = clusters[x].getTotalPontos();
-                    double soma  = 0.0;
+                //Recalcular o centro de cada cluster
+                for(x = 0; x < k; x++){
+                    for(y = 0; y < valorTotal; y++){
+                        int totalPontosCluster = clusters[x].getTotalPontos();
+                        double soma  = 0.0;
 
-                    if(totalPontosCluster > 0){
-                        for(z = 0; z < totalPontosCluster; z++){
-                            soma += clusters[x].getPonto(z).getValores(y);
+                        if(totalPontosCluster > 0){
+                            for(z = 0; z < totalPontosCluster; z++){
+                                soma += clusters[x].getPonto(z).getValores(y);
+                            }
+                            clusters[x].setValorCentral(y, soma/totalPontosCluster);
                         }
-                        clusters[x].setValorCentral(y, soma/totalPontosCluster);
                     }
                 }
-            }
 
-            if(feito == true || interacao >= maxInteracoes){
-                cout << "Encerrando interação: " << interação << endl << endl;
-                break;
+                //Condição de parada
+                if(feito == true || interacao >= maxInteracoes){
+                    cout << "Encerrando interação: " << interacao << endl << endl;
+                    break;
+                }
+                interacao++;
             }
-            interacao++;
             
+            int totalPontosCluster;
             //Mostrar elementos no clusters
             for(x = 0; x < k; x++){
-                int totalPontosCluster clusters[x].getTotalPontos();
+                totalPontosCluster = clusters[x].getTotalPontos();
 
-                cout << "Cluster: " << clusters[x].getIdPonto + 1 << endl;
+                cout << "Cluster: " << clusters[x].getIdCluster() + 1 << endl;
 
                 for(y = 0; y < totalPontosCluster; y++){
-                    cout << "Ponto: " << clusters[x].getPonto(j).getIdPonto() + 1 << ": ";
+                    cout << "Ponto " << clusters[x].getPonto(y).getIdPonto() + 1 << ": ";
                     for(z = 0; z < valorTotal; z++){
                         cout << clusters[x].getPonto(y).getValores(z) << " ";
                     }
                     string nomePonto = clusters[x].getPonto(y).getNome();
-
+                    cout << endl;
                     if(nomePonto != "")
                         cout << " - " << nomePonto;
                 }   
@@ -138,6 +144,8 @@ class Kmeans{
             cout << "Valores Cluster: ";
             for(y = 0; y < valorTotal; y++)
                 cout << clusters[y].getValorCentral(y) << " ";
-        }   cout << endl << endl;
+            cout << endl << endl;
+        }   
 
 };
+#endif //KMEAN

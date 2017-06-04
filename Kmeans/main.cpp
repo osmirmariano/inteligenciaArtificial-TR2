@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "Ponto.cpp"
 #include "Cluster.cpp"
+#include "Kmean.cpp"
 
 using namespace std;
 
@@ -39,19 +40,19 @@ int main(int argc, char const *argv[]){
 			valores.push_back(valor);
 		}
 
-		if(nomePonto){
+		if(temNome){
 			cin >> nomePonto;
 			Ponto p(x, valores, nomePonto);
 			pontos.push_back(p);
 		}
 
 		else{
-			Pontos p(x, valores);
+			Ponto p(x, valores);
 			pontos.push_back(p);
 		}
 	}
 
-	KMean kmean(k, pontosTotal, valorTotal, maxInteracoes);
+	Kmeans kmean(k, pontosTotal, valorTotal, maxInteracoes);
 	kmean.percorre(pontos);
 
 	return 0;

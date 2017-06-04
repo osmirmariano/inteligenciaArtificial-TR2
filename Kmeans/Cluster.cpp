@@ -1,3 +1,6 @@
+#ifndef CLUSTER_H
+#define CLUSTER_H
+
 #include <iostream>
 #include <vector>
 #include "Ponto.cpp"
@@ -17,8 +20,8 @@ class Cluster{
             this->idCluster = idCluster;
            // int totalValores = point.getTotalValores();
             
-            for(x = 0; x < point.getTotalValores(); x++){
-                valorCentral.push_back(point.getValue(x));
+            for(x = 0; x < ponto.getTotalValores(); x++){
+                valorCentral.push_back(ponto.getValores(x));
             }
             pontos.push_back(ponto);
         }
@@ -31,7 +34,7 @@ class Cluster{
         bool removePonto(int idPonto){
             int x;
             for(x = 0; x < pontos.size(); x++){
-                if(pontos[x].getIdPonto() = idPonto){
+                if(pontos[x].getIdPonto() == idPonto){
                     pontos.erase(pontos.begin()+x);
                     return true;
                 }
@@ -59,3 +62,4 @@ class Cluster{
             return idCluster;
         }
 };
+#endif //CLUSTER

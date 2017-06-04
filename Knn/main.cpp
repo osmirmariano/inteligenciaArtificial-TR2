@@ -11,6 +11,7 @@ int main(int argc, char const *argv[]){
 	int tamTreinamento = 105;
 	double a, b, c, d;
 	string classe, classeObtida;
+	Knn knn;
 
 	for(x = 0; x < tamTreinamento; x++){
 		cin >> a >> b >> c >> d >> classe;
@@ -23,16 +24,17 @@ int main(int argc, char const *argv[]){
 	for(x = 0; x < tamTestes; x++){
 		cin >> a >> b >> c >> d >> classe;
 		Individuo ind(a, b, c, d, classe);
-		classeObtida = classificar(individuos, ind, k){
+		classeObtida = knn.classificar(individuos, ind, k);
 		
 		cout << "Classe esperada: " << classe << endl << endl;
 		cout << "Classe obtida: " << classeObtida << endl << endl;
 
 		if(classe == classeObtida)
 			acertos++;
-		}
 	}
+	
 
+	cout << "---------------------------------------------------" << endl;
 	cout << acertos << " acertos de um total de " << tamTestes << " testes" << endl;
 
 	return 0;

@@ -1,10 +1,14 @@
+#ifndef PONTO_H
+#define PONTO_H
+
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 class Ponto{
     private: 
-        idPonto, idCluster
+        int idPonto, idCluster;
         vector<double> valores; //Conjunto de atributos
         //int totalValores;
         string nome;//Teste
@@ -17,9 +21,9 @@ class Ponto{
             //totalValores = valores.size();
             
             for(x = 0; x < valores.size(); x++){
-                this.push_back(valores[x]);
+                this->valores.push_back(valores[x]);
             }
-            this->name = name;
+            this->nome = nome;
             idCluster = -1; //Incialmente não tem cluster por isso -1
         }
 
@@ -37,18 +41,19 @@ class Ponto{
         }
 
         double getValores(int a){
-            return values[a];
+            return valores[a];
         }
 
         int getTotalValores(){
             return valores.size();
         }
 
-        void adicionarValores(double valores){
-            valores.push_back(valores);
+        void adicionarValores(double valor){
+            valores.push_back(valor);
         }
 
-        string getName(){
-            return name;
+        string getNome(){
+            return nome;
         }
 };
+#endif //PONTO
