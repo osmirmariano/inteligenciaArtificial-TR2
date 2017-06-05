@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char const *argv[]){
 	vector<Individuo> individuos;
 	int k = 3, x;
-	int tamTreinamento = 105;
+	int tamTreinamento = 50;
 	double a, b, c, d;
 	string classe, classeObtida;
 	Knn knn;
@@ -35,8 +35,10 @@ int main(int argc, char const *argv[]){
 	
 
 	cout << "---------------------------------------------------" << endl;
-	cout << "QUANTIDADE DE K VIZINHOS: " << k << endl;
-	cout << acertos << " ACERTOS DE UM TOTAL DE " << tamTestes << " TESTES" << endl;
+	cout << "QUANTIDADE DE K VIZINHOS: " << k << endl << endl;
+	cout << "TAMANHO DO CONJUNTO DE TREINAMENTO: " << tamTreinamento << endl << endl;
+	cout << acertos << " ACERTOS DE UM TOTAL DE " << tamTestes << " TESTES" << endl << endl;
+	cout << "---------------------------------------------------" << endl;
 
 	return 0;
 }
