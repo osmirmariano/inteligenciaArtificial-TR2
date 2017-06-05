@@ -18,9 +18,9 @@ class Cluster{
         Cluster(int idCluster, Ponto ponto){
             int x;
             this->idCluster = idCluster;
-           // int totalValores = point.getTotalValores();
+           int totalValores = ponto.getTotalValores();
             
-            for(x = 0; x < ponto.getTotalValores(); x++){
+            for(x = 0; x < totalValores; x++){
                 valorCentral.push_back(ponto.getValores(x));
             }
             pontos.push_back(ponto);
@@ -32,10 +32,12 @@ class Cluster{
         }
 
         bool removePonto(int idPonto){
-            int x;
-            for(x = 0; x < pontos.size(); x++){
+            int x, totalPontos;
+            totalPontos = pontos.size();
+
+            for(x = 0; x < totalPontos; x++){
                 if(pontos[x].getIdPonto() == idPonto){
-                    pontos.erase(pontos.begin()+x);
+                    pontos.erase(pontos.begin( )+ x);
                     return true;
                 }
             }

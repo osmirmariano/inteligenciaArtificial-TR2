@@ -12,8 +12,6 @@ using namespace std;
 
 class Knn{
 	public:
-		//Knn();
-		
 		double distanciaEuclidiana(Individuo individuo1, Individuo individuo2){
 			int x;
 			double soma;
@@ -53,25 +51,37 @@ class Knn{
 				
 				string classe = individuos[it->second].getClasse();
 
-				if(classe == "Iris-setosa")
+				// if(classe == "Iris-setosa")
+				// 	contClasses[0]++;
+				// else if(classe == "Iris-versicolor")
+				// 	contClasses[1]++;
+				// else
+				// 	contClasses[2]++;
+
+				if(classe == "B")
 					contClasses[0]++;
-				else if(classe == "Iris-versicolor")
+				else if(classe == "R")
 					contClasses[1]++;
 				else
 					contClasses[2]++;
-
 				contK++;
 			}
 			
 			string classificacaoClasse;
 			
-			if(contClasses[0] >= contClasses[1] && contClasses[0] >= contClasses[2])
-				classificacaoClasse = "Iris-setosa";
-			else if(contClasses[1] >= contClasses[0] && contClasses[1] >= contClasses[2])
-				classificacaoClasse = "Iris-versicolor";
-			else
-				classificacaoClasse = "Iris-virginica";
+			// if(contClasses[0] >= contClasses[1] && contClasses[0] >= contClasses[2])
+			// 	classificacaoClasse = "Iris-setosa";
+			// else if(contClasses[1] >= contClasses[0] && contClasses[1] >= contClasses[2])
+			// 	classificacaoClasse = "Iris-versicolor";
+			// else
+			// 	classificacaoClasse = "Iris-virginica";
 
+			if(contClasses[0] >= contClasses[1] && contClasses[0] >= contClasses[2])
+				classificacaoClasse = "B";
+			else if(contClasses[1] >= contClasses[0] && contClasses[1] >= contClasses[2])
+				classificacaoClasse = "R";
+			else
+				classificacaoClasse = "L";
 			return classificacaoClasse;
 
 		}	

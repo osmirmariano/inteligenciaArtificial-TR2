@@ -29,11 +29,11 @@ class Kmeans{
             }
 
             distanciaMin = sqrt(soma);
+            double distancia;
 
             for(x = 1; x < k; x++){
                 soma = 0.0;
-                double distancia;
-
+            
                 for(y = 0; y < valorTotal; y++){
                     soma += pow(clusters[x].getValorCentral(y) - ponto.getValores(y), 2.0);
                 }
@@ -97,12 +97,13 @@ class Kmeans{
                         feito = false;//pq mudou de grupo
                     }
                 }
-
+                double soma;
+                int totalPontosCluster;
                 //Recalcular o centro de cada cluster
                 for(x = 0; x < k; x++){
                     for(y = 0; y < valorTotal; y++){
-                        int totalPontosCluster = clusters[x].getTotalPontos();
-                        double soma  = 0.0;
+                        totalPontosCluster = clusters[x].getTotalPontos();
+                        soma  = 0.0;
 
                         if(totalPontosCluster > 0){
                             for(z = 0; z < totalPontosCluster; z++){

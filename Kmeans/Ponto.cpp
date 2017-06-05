@@ -10,7 +10,7 @@ class Ponto{
     private: 
         int idPonto, idCluster;
         vector<double> valores; //Conjunto de atributos
-        //int totalValores;
+        int totalValores;
         string nome;//Teste
 
     public:
@@ -18,9 +18,9 @@ class Ponto{
         Ponto(int idPonto, vector<double>& valores, string nome = ""){
             int x;
             this->idPonto = idPonto;
-            //totalValores = valores.size();
+            totalValores = valores.size();
             
-            for(x = 0; x < valores.size(); x++){
+            for(x = 0; x < totalValores; x++){
                 this->valores.push_back(valores[x]);
             }
             this->nome = nome;
@@ -45,7 +45,7 @@ class Ponto{
         }
 
         int getTotalValores(){
-            return valores.size();
+            return totalValores;
         }
 
         void adicionarValores(double valor){

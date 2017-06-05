@@ -13,14 +13,15 @@ int main(int argc, char const *argv[]){
 	srand(time(NULL));
 
 	int pontosTotal, valorTotal, k, maxInteracoes, temNome, x, y;
+	
 	cin >> pontosTotal >> valorTotal >> k >> maxInteracoes;
+
 	vector<Ponto> pontos;
 	string nomePonto;
 	double valor;
+	vector<double> valores;
 
 	for(x < 0; x < pontosTotal; x++){
-		vector<double> valores;
-
 		for(int y = 0; y < valorTotal; y++){
 			cin >> valor;
 			valores.push_back(valor);
